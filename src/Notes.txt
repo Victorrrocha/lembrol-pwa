@@ -1,0 +1,11 @@
+todo = {
+    title, required
+    importance, required
+    scheduled_data, required
+    begins_at, required
+    ends_at, required
+    time_before,
+    time_after
+}
+
+// create a state manager 
