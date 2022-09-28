@@ -42,51 +42,65 @@ const Home = () => {
     }
 
     return (
-        <Box sx={{ position: "relative", height: "100%" }}>
+        <Box
+            sx={{
+                position: "relative",
+                height: "100%",
+            }}
+        >
             <DashboardHeader />
-            <Grid container direction="column">
-                <TodoList
-                    key={CONSTANTS.TODAY}
-                    type={CONSTANTS.TODAY}
-                    sectionTitle="Para Hoje"
-                    expanded={expanded}
-                    handleChange={handleChange}
-                    keepOpen={true}
-                    todos={forToday}
-                />
-                <TodoList
-                    key={CONSTANTS.URGENT_AND_IMPORTANT}
-                    type={CONSTANTS.URGENT_AND_IMPORTANT}
-                    sectionTitle="Próximas Urgentes"
-                    expanded={expanded}
-                    handleChange={handleChange}
-                    todos={nextUrgent}
-                />
-                <TodoList
-                    key={CONSTANTS.COULD_BE_RESCHEDULED}
-                    type={CONSTANTS.COULD_BE_RESCHEDULED}
-                    sectionTitle="Podem ser reagendadas"
-                    expanded={expanded}
-                    handleChange={handleChange}
-                    todos={couldBeRescheduled}
-                />
-                <TodoList
-                    key={CONSTANTS.COULD_BE_DELEGATED}
-                    type={CONSTANTS.COULD_BE_DELEGATED}
-                    sectionTitle="Podem ser delegadas"
-                    expanded={expanded}
-                    handleChange={handleChange}
-                    todos={couldBeDelegated}
-                />
-                <TodoList
-                    key={CONSTANTS.NOT_IMPORTANT}
-                    type={CONSTANTS.NOT_IMPORTANT}
-                    sectionTitle="Não importantes"
-                    expanded={expanded}
-                    handleChange={handleChange}
-                    todos={notImportant}
-                />
-            </Grid>
+            <Box
+                sx={{
+                    position: "relative",
+                    height: "85%",
+                    overflow: "scroll",
+                    overflowX: "hidden",
+                }}
+            >
+                <Grid container direction="column">
+                    <TodoList
+                        key={CONSTANTS.TODAY}
+                        type={CONSTANTS.TODAY}
+                        sectionTitle="Para Hoje"
+                        expanded={expanded}
+                        handleChange={handleChange}
+                        keepOpen={true}
+                        todos={forToday}
+                    />
+                    <TodoList
+                        key={CONSTANTS.URGENT_AND_IMPORTANT}
+                        type={CONSTANTS.URGENT_AND_IMPORTANT}
+                        sectionTitle="Próximas Urgentes"
+                        expanded={expanded}
+                        handleChange={handleChange}
+                        todos={nextUrgent}
+                    />
+                    <TodoList
+                        key={CONSTANTS.COULD_BE_RESCHEDULED}
+                        type={CONSTANTS.COULD_BE_RESCHEDULED}
+                        sectionTitle="Podem ser reagendadas"
+                        expanded={expanded}
+                        handleChange={handleChange}
+                        todos={couldBeRescheduled}
+                    />
+                    <TodoList
+                        key={CONSTANTS.COULD_BE_DELEGATED}
+                        type={CONSTANTS.COULD_BE_DELEGATED}
+                        sectionTitle="Podem ser delegadas"
+                        expanded={expanded}
+                        handleChange={handleChange}
+                        todos={couldBeDelegated}
+                    />
+                    <TodoList
+                        key={CONSTANTS.NOT_IMPORTANT}
+                        type={CONSTANTS.NOT_IMPORTANT}
+                        sectionTitle="Não importantes"
+                        expanded={expanded}
+                        handleChange={handleChange}
+                        todos={notImportant}
+                    />
+                </Grid>
+            </Box>
             <Fab
                 onClick={() => navigate("/new")}
                 sx={{ position: "absolute", right: 0, bottom: 0 }}

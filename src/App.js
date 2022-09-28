@@ -18,7 +18,11 @@ function App() {
                 <ThemeProvider theme={theme}>
                     <Container
                         maxWidth="xs"
-                        sx={{ paddingY: "1rem" }}
+                        sx={{
+                            marginTop: { xs: "0", md: "2rem" },
+                            paddingY: "1rem",
+                            height: { xs: "100vh", md: "90vh" },
+                        }}
                         className="App"
                     >
                         <Routes>

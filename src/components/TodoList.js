@@ -31,14 +31,16 @@ const TodoList = ({
         >
             <AccordionSummary
                 sx={{ backgroundColor: COLORS[type], minHeight: "64px" }}
-                expandIcon={!!keepOpen ? "" : <ExpandMoreIcon />}
+                expandIcon={
+                    !!keepOpen ? "" : <ExpandMoreIcon sx={{ fill: "#fff" }} />
+                }
                 aria-controls={`panel-${formatIdentification(sectionTitle)}`}
                 id={`${formatIdentification(sectionTitle)}-header`}
             >
                 <Typography
                     sx={{ color: "#fff", fontWeight: 400, fontSize: "1.3rem" }}
                 >
-                    {sectionTitle}
+                    {sectionTitle} [{todos.length}]
                 </Typography>
             </AccordionSummary>
             <AccordionDetails sx={{ pt: "1rem" }}>

@@ -14,3 +14,13 @@ export const COLORS = {
     COULD_BE_DELEGATED: "#D9601A",
     NOT_IMPORTANT: "#D9A441",
 };
+
+export const DAYS = [
+    "Domingo",
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira",
+    "Sábado",
+];

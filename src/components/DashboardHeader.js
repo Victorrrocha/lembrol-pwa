@@ -1,9 +1,16 @@
 import { Grid, Typography } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import dayjs from "dayjs";
+import { DAYS } from "../helpers/constants";
 
 const DashboardHeader = () => {
+    const dayOfTheWeek = DAYS[dayjs().day()];
+    const today = `${dayjs().get("date")}/${
+        dayjs().get("month") + 1
+    }/${dayjs().get("year")}`;
+
     return (
-        <Grid container direction="row" mb={2}>
+        <Grid container direction="row" pt={2} pb={2}>
             <Grid container item direction="column" flex="2">
                 <Typography
                     sx={{ display: "inline-block" }}
@@ -11,7 +18,7 @@ const DashboardHeader = () => {
                     component="h1"
                     variant="h4"
                 >
-                    Quarta-feira,
+                    {dayOfTheWeek},
                 </Typography>
                 <Typography
                     sx={{ display: "inline-block" }}
@@ -19,7 +26,7 @@ const DashboardHeader = () => {
                     component="h2"
                     variant="h6"
                 >
-                    19/05/2022
+                    {today}
                 </Typography>
             </Grid>
             <Grid container item flex="1" justifyContent="flex-end">
