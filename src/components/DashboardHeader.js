@@ -2,8 +2,10 @@ import { Grid, Typography } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import dayjs from "dayjs";
 import { DAYS } from "../helpers/constants";
+import { useNavigate } from "react-router-dom";
 
 const DashboardHeader = () => {
+    const navigate = useNavigate();
     const dayOfTheWeek = DAYS[dayjs().day()];
     const today = `${dayjs().get("date")}/${
         dayjs().get("month") + 1
@@ -30,7 +32,11 @@ const DashboardHeader = () => {
                 </Typography>
             </Grid>
             <Grid container item flex="1" justifyContent="flex-end">
-                <AccountCircleIcon item sx={{ fontSize: "4rem" }} />
+                <AccountCircleIcon
+                    item
+                    sx={{ fontSize: "4rem", cursor: "pointer" }}
+                    onClick={() => navigate("/user")}
+                />
             </Grid>
         </Grid>
     );

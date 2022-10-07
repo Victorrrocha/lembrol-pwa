@@ -6,6 +6,8 @@ import NewTodo from "./pages/NewTodo";
 import { TodoProvider } from "./Context/TodoContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Background from "./layout/Background";
+import Profile from "./pages/Profile";
 
 const theme = createTheme({
     components: {},
@@ -19,18 +21,23 @@ function App() {
                     <Container
                         maxWidth="xs"
                         sx={{
-                            marginTop: { xs: "0", md: "2rem" },
+                            backgroundColor: "transparent",
                             paddingY: "1rem",
-                            height: { xs: "100vh", md: "90vh" },
+                            height: { xs: "100vh" },
+                            display: "flex",
+                            alignItems: "center",
                         }}
                         className="App"
                     >
-                        <Routes>
-                            <Route path="/auth" element={<Login />} />
-                            <Route path="/" element={<Home />} />
-                            <Route path="/new" element={<NewTodo />} />
-                            <Route path="/edit/:id" element={<NewTodo />} />
-                        </Routes>
+                        <Background>
+                            <Routes>
+                                <Route path="/auth" element={<Login />} />
+                                <Route path="/" element={<Home />} />
+                                <Route path="/new" element={<NewTodo />} />
+                                <Route path="/edit/:id" element={<NewTodo />} />
+                                <Route path="/user" element={<Profile />} />
+                            </Routes>
+                        </Background>
                     </Container>
                 </ThemeProvider>
             </Router>

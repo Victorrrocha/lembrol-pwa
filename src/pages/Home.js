@@ -7,6 +7,7 @@ import AddIcon from "@mui/icons-material/Add";
 import TodoContext from "../Context/todo-context";
 import { CONSTANTS } from "../helpers/constants";
 import Spinner from "../components/Spinner/Spinner";
+import Page from "../layout/Page";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -42,12 +43,7 @@ const Home = () => {
     }
 
     return (
-        <Box
-            sx={{
-                position: "relative",
-                height: "100%",
-            }}
-        >
+        <Page>
             <DashboardHeader />
             <Box
                 sx={{
@@ -103,14 +99,14 @@ const Home = () => {
             </Box>
             <Fab
                 onClick={() => navigate("/new")}
-                sx={{ position: "absolute", right: 0, bottom: 0 }}
+                sx={{ position: "absolute", right: 15, bottom: 15 }}
                 color="primary"
                 aria-label="add"
                 size="large"
             >
                 <AddIcon />
             </Fab>
-        </Box>
+        </Page>
     );
 };
 

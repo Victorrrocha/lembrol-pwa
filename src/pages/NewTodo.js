@@ -23,6 +23,8 @@ import TodoContext from "../Context/todo-context";
 import { useNavigate, useParams } from "react-router-dom";
 import { v4 as uid } from "uuid";
 import { CONSTANTS } from "../helpers/constants";
+import NavigationHeader from "../layout/NavigationHeader";
+import Page from "../layout/Page";
 
 const NewTodo = () => {
     const navigate = useNavigate();
@@ -123,188 +125,204 @@ const NewTodo = () => {
     };
 
     return (
-        <Box sx={{ height: "100%" }}>
-            <Box>
-                <Typography variant="h5" component="h1">
-                    Nova atividade
-                </Typography>
-            </Box>
-            <Grid
-                sx={{ height: "fit-content" }}
-                container
-                alignItems="center"
-                direction="column"
-            >
-                <TextField
-                    item
-                    fullWidth
-                    name="title"
-                    value={values.title}
-                    onChange={handleValueChange}
-                    id="title"
-                    label="Título"
-                    variant="outlined"
-                    sx={{ m: "1rem 0" }}
-                />
-                <LocalizationProvider item dateAdapter={AdapterDayjs}>
-                    <Stack spacing={2} sx={{ width: "100%", mb: "1rem" }}>
-                        <MobileDatePicker
+        <>
+            <NavigationHeader Title="Nova atividade" />
+            <Page>
+                <Box sx={{ height: "100%" }}>
+                    <Box>
+                        <Typography variant="h5" component="h1">
+                            Nova atividade
+                        </Typography>
+                    </Box>
+                    <Grid
+                        sx={{ height: "fit-content" }}
+                        container
+                        alignItems="center"
+                        direction="column"
+                    >
+                        <TextField
                             item
-                            label="Data"
-                            inputFormat="DD/MM/YYYY"
-                            value={values.scheduled_date}
-                            onChange={handleDateChange}
-                            renderInput={(params) => <TextField {...params} />}
+                            fullWidth
+                            name="title"
+                            value={values.title}
+                            onChange={handleValueChange}
+                            id="title"
+                            label="Título"
+                            variant="outlined"
+                            sx={{ m: "1rem 0" }}
                         />
-                        <Grid container justifyContent="space-between">
-                            <Box sx={{ width: "45%" }}>
-                                <TimePicker
-                                    InputProps={{ width: "50%" }}
+                        <LocalizationProvider item dateAdapter={AdapterDayjs}>
+                            <Stack
+                                spacing={2}
+                                sx={{ width: "100%", mb: "1rem" }}
+                            >
+                                <MobileDatePicker
                                     item
-                                    label="Início"
-                                    value={values.begins_at}
-                                    onChange={handleStartTimeChange}
+                                    label="Data"
+                                    inputFormat="DD/MM/YYYY"
+                                    value={values.scheduled_date}
+                                    onChange={handleDateChange}
                                     renderInput={(params) => (
                                         <TextField {...params} />
                                     )}
                                 />
-                            </Box>
-                            <Box sx={{ width: "45%" }}>
-                                <TimePicker
-                                    InputProps={{ width: "50%" }}
-                                    item
-                                    label="Fim"
-                                    value={values.ends_at}
-                                    onChange={handleEndTimeChange}
-                                    renderInput={(params) => (
-                                        <TextField {...params} />
-                                    )}
-                                />
-                            </Box>
+                                <Grid container justifyContent="space-between">
+                                    <Box sx={{ width: "45%" }}>
+                                        <TimePicker
+                                            InputProps={{ width: "50%" }}
+                                            item
+                                            label="Início"
+                                            value={values.begins_at}
+                                            onChange={handleStartTimeChange}
+                                            renderInput={(params) => (
+                                                <TextField {...params} />
+                                            )}
+                                        />
+                                    </Box>
+                                    <Box sx={{ width: "45%" }}>
+                                        <TimePicker
+                                            InputProps={{ width: "50%" }}
+                                            item
+                                            label="Fim"
+                                            value={values.ends_at}
+                                            onChange={handleEndTimeChange}
+                                            renderInput={(params) => (
+                                                <TextField {...params} />
+                                            )}
+                                        />
+                                    </Box>
+                                </Grid>
+                            </Stack>
+                        </LocalizationProvider>
+                        <Grid container>
+                            <Grid container xs={6} item sx={{ mb: "1rem" }}>
+                                <FormControl item sx={{ width: "100%" }}>
+                                    <FormLabel
+                                        id="time_before"
+                                        sx={{
+                                            fontWeight: "700",
+                                            color: "#000",
+                                        }}
+                                    >
+                                        Tempo Pré Atividade
+                                    </FormLabel>
+                                    <RadioGroup
+                                        row
+                                        sx={{
+                                            width: "100%",
+                                            display: "flex",
+                                            justifyContent: "start",
+                                            ml: 1,
+                                        }}
+                                        aria-labelledby="time_before"
+                                        name="time_before"
+                                        value={values.time_before}
+                                        onChange={handleValueChange}
+                                    >
+                                        <FormControlLabel
+                                            value="0"
+                                            control={<Radio />}
+                                            label="Nenhum"
+                                        />
+                                        <FormControlLabel
+                                            value="15"
+                                            control={<Radio />}
+                                            label="15 min"
+                                        />
+                                        <FormControlLabel
+                                            value="30"
+                                            control={<Radio />}
+                                            label="30 min"
+                                        />
+                                        <FormControlLabel
+                                            value="45"
+                                            control={<Radio />}
+                                            label="45min"
+                                        />
+                                    </RadioGroup>
+                                </FormControl>
+                            </Grid>
+
+                            <Grid container item xs={6}>
+                                <FormControl item sx={{ width: "100%" }}>
+                                    <FormLabel
+                                        id="time_after"
+                                        sx={{
+                                            fontWeight: "700",
+                                            color: "#000",
+                                        }}
+                                    >
+                                        Tempo Pós Atividade
+                                    </FormLabel>
+                                    <RadioGroup
+                                        row
+                                        sx={{
+                                            width: "100%",
+                                            display: "flex",
+                                            justifyContent: "start",
+                                            pl: 1,
+                                        }}
+                                        aria-labelledby="time_after"
+                                        name="time_after"
+                                        value={values.time_after}
+                                        onChange={handleValueChange}
+                                    >
+                                        <FormControlLabel
+                                            value="0"
+                                            control={<Radio />}
+                                            label="Nenhum"
+                                        />
+                                        <FormControlLabel
+                                            value="15"
+                                            control={<Radio />}
+                                            label="15 min"
+                                        />
+                                        <FormControlLabel
+                                            value="30"
+                                            control={<Radio />}
+                                            label="30 min"
+                                        />
+                                        <FormControlLabel
+                                            value="45"
+                                            control={<Radio />}
+                                            label="45min"
+                                        />
+                                    </RadioGroup>
+                                </FormControl>
+                            </Grid>
                         </Grid>
-                    </Stack>
-                </LocalizationProvider>
-                <Grid container>
-                    <Grid container xs={6} item sx={{ mb: "1rem" }}>
-                        <FormControl item sx={{ width: "100%" }}>
-                            <FormLabel
-                                id="time_before"
-                                sx={{ fontWeight: "700", color: "#000" }}
-                            >
-                                Tempo Pré Atividade
-                            </FormLabel>
-                            <RadioGroup
-                                row
-                                sx={{
-                                    width: "100%",
-                                    display: "flex",
-                                    justifyContent: "start",
-                                    ml: 1,
-                                }}
-                                aria-labelledby="time_before"
-                                name="time_before"
-                                value={values.time_before}
-                                onChange={handleValueChange}
-                            >
-                                <FormControlLabel
-                                    value="0"
-                                    control={<Radio />}
-                                    label="Nenhum"
-                                />
-                                <FormControlLabel
-                                    value="15"
-                                    control={<Radio />}
-                                    label="15 min"
-                                />
-                                <FormControlLabel
-                                    value="30"
-                                    control={<Radio />}
-                                    label="30 min"
-                                />
-                                <FormControlLabel
-                                    value="45"
-                                    control={<Radio />}
-                                    label="45min"
-                                />
-                            </RadioGroup>
-                        </FormControl>
-                    </Grid>
 
-                    <Grid container item xs={6}>
-                        <FormControl item sx={{ width: "100%" }}>
-                            <FormLabel
-                                id="time_after"
-                                sx={{ fontWeight: "700", color: "#000" }}
-                            >
-                                Tempo Pós Atividade
-                            </FormLabel>
-                            <RadioGroup
-                                row
-                                sx={{
-                                    width: "100%",
-                                    display: "flex",
-                                    justifyContent: "start",
-                                    pl: 1,
-                                }}
-                                aria-labelledby="time_after"
-                                name="time_after"
-                                value={values.time_after}
-                                onChange={handleValueChange}
-                            >
+                        <Box>
+                            <FormGroup>
                                 <FormControlLabel
-                                    value="0"
-                                    control={<Radio />}
-                                    label="Nenhum"
+                                    sx={{ flexDirection: "row-reverse" }}
+                                    control={
+                                        <Switch
+                                            onChange={handleImportanceChange}
+                                            value={isImportant}
+                                        />
+                                    }
+                                    label="Importante?"
                                 />
                                 <FormControlLabel
-                                    value="15"
-                                    control={<Radio />}
-                                    label="15 min"
+                                    sx={{ flexDirection: "row-reverse" }}
+                                    control={
+                                        <Switch
+                                            onChange={handleUrgencyChange}
+                                            value={isUrgent}
+                                        />
+                                    }
+                                    label="Urgente?"
                                 />
-                                <FormControlLabel
-                                    value="30"
-                                    control={<Radio />}
-                                    label="30 min"
-                                />
-                                <FormControlLabel
-                                    value="45"
-                                    control={<Radio />}
-                                    label="45min"
-                                />
-                            </RadioGroup>
-                        </FormControl>
+                            </FormGroup>
+                        </Box>
+                        <Button item onClick={submit}>
+                            {editMode ? "Atualizar" : "Adicionar"}
+                        </Button>
                     </Grid>
-                </Grid>
-
-                <Box>
-                    <FormGroup>
-                        <FormControlLabel
-                            sx={{ flexDirection: "row-reverse" }}
-                            control={
-                                <Switch
-                                    onChange={handleImportanceChange}
-                                    value={isImportant}
-                                />
-                            }
-                            label="Importante?"
-                        />
-                        <FormControlLabel
-                            sx={{ flexDirection: "row-reverse" }}
-                            control={
-                                <Switch
-                                    onChange={handleUrgencyChange}
-                                    value={isUrgent}
-                                />
-                            }
-                            label="Urgente?"
-                        />
-                    </FormGroup>
                 </Box>
-                <Button item onClick={submit}>
-                    {editMode ? "Atualizar" : "Adicionar"}
-                </Button>
-            </Grid>
-        </Box>
+            </Page>
+        </>
     );
 };
 
