@@ -10,6 +10,7 @@ function Background({ children }) {
                 overflow: "hidden",
                 backgroundColor: "#fff",
                 width: "100%",
+                borderRadius: "20px",
             }}
         >
             {children}

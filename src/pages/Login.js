@@ -18,6 +18,7 @@ import {
 import auth from "../firebase/auth";
 import TodoContext from "../Context/todo-context";
 import { useNavigate } from "react-router-dom";
+import { sendLogEvent } from "../firebase/analytics";
 
 const formGrid = {
     width: { xs: "80%" },
@@ -95,6 +96,7 @@ function Login() {
                 };
                 // console.log(userCredential);
                 context.loginUser(newUser);
+                sendLogEvent("User logged in");
                 navigate("/");
             })
             .catch((error) => {
@@ -104,7 +106,14 @@ function Login() {
     }
 
     return (
-        <Grid container direction="column" alignItems="center" height="100%">
+        <Grid
+            container
+            direction="column"
+            alignItems="center"
+            height="100%"
+            maxWidth="400px"
+            margin="0 auto"
+        >
             <Grid
                 container
                 flex="1"
@@ -114,7 +123,10 @@ function Login() {
                 <img
                     src={img}
                     alt="logo"
-                    style={{ width: "80%", objectFit: "contain" }}
+                    style={{
+                        width: "80%",
+                        objectFit: "contain",
+                    }}
                 />
             </Grid>
             <Grid
@@ -241,7 +253,7 @@ function Login() {
                             : "Já é cadastrado?"}
                     </Button>
                 </Grid>
-                <Typography item textAlign="center">
+                <Typography item textAlign="center" mb="1rem">
                     Copyright victor@2022
                 </Typography>
             </Grid>

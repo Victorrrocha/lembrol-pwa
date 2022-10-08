@@ -1,6 +1,6 @@
 import { Box, Fab, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useState, useContext, useEffect, useRef } from "react";
+import { useState, useContext, useEffect } from "react";
 import TodoList from "../components/TodoList";
 import DashboardHeader from "../components/DashboardHeader";
 import AddIcon from "@mui/icons-material/Add";
@@ -48,7 +48,7 @@ const Home = () => {
             <Box
                 sx={{
                     position: "relative",
-                    height: "85%",
+                    maxHeight: "600px",
                     overflow: "scroll",
                     overflowX: "hidden",
                 }}

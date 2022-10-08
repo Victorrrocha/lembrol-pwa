@@ -8,9 +8,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Background from "./layout/Background";
 import Profile from "./pages/Profile";
+import { COLORS } from "./helpers/constants";
 
 const theme = createTheme({
-    components: {},
+    palette: {
+        primary: {
+            main: COLORS.PRIMARY_SOLID,
+        },
+    },
 });
 
 function App() {
@@ -19,7 +24,6 @@ function App() {
             <Router>
                 <ThemeProvider theme={theme}>
                     <Container
-                        maxWidth="xs"
                         sx={{
                             backgroundColor: "transparent",
                             paddingY: "1rem",

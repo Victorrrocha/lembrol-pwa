@@ -52,7 +52,7 @@ const todo_db = [
 ];
 
 const defaultTodoState = {
-    todos: [...todo_db],
+    todos: [],
 };
 
 export const TodoProvider = ({ children }) => {

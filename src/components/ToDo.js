@@ -1,17 +1,10 @@
-import {
-    Box,
-    Grid,
-    Checkbox,
-    FormControlLabel,
-    Typography,
-} from "@mui/material";
+import { Box, Grid, Checkbox, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useContext, useState } from "react";
 import TodoContext from "../Context/todo-context";
 import { useNavigate } from "react-router-dom";
 import { COLORS } from "../helpers/constants";
-import { height } from "@mui/system";
 
 const ToDo = ({ todo }) => {
     const navigate = useNavigate();
@@ -44,11 +37,6 @@ const ToDo = ({ todo }) => {
         textOverflow: "ellipsis",
         overflow: "hidden",
         lineHeight: "1.5rem",
-        textDecorationLine: "line-through",
-        color: "#c3c3c3",
-    };
-
-    const doneTodo = {
         textDecorationLine: "line-through",
         color: "#c3c3c3",
     };

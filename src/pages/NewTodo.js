@@ -316,7 +316,12 @@ const NewTodo = () => {
                                 />
                             </FormGroup>
                         </Box>
-                        <Button item onClick={submit}>
+                        <Button
+                            item
+                            onClick={submit}
+                            variant="contained"
+                            sx={{ mt: "2rem" }}
+                        >
                             {editMode ? "Atualizar" : "Adicionar"}
                         </Button>
                     </Grid>
